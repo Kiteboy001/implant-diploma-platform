@@ -2,12 +2,23 @@ import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import Image from "next/image"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 import ChatWidget from "@/app/components/ChatWidget"
 
 export default async function DashboardPage() {
   const session = await auth()
+
+  if (!session?.user) {
+    redirect("/auth/login")
+  }
+
+  const userId = (session.user as any)?.id
+  if (!userId) {
+    redirect("/auth/login")
+  }
+
   const user = await prisma.user.findUnique({
-    where: { id: (session?.user as any)?.id },
+    where: { id: userId },
     include: {
       submissions: { orderBy: { createdAt: "desc" }, take: 5 },
     },
