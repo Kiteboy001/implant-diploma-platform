@@ -15,15 +15,28 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${HERMES_API_KEY}`,
+    }
+
+    // Skip ngrok browser warning when using ngrok tunnels
+    if (HERMES_API_URL.includes("ngrok")) {
+      headers["ngrok-skip-browser-warning"] = "true"
+    }
+
     const response = await fetch(`${HERMES_API_URL}/v1/chat/completions`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${HERMES_API_KEY}`,
-      },
+      headers,
       body: JSON.stringify({
         model: "hermes-agent",
-        messages: [{ role: "user", content: message }],
+        messages: [
+          {
+            role: "system",
+            content: "You are the Implant Diploma AI study coach. Be warm, encouraging, and practical. Load the implant-diploma-coach skill for knowledge about the programme. Never give clinical advice. Always defer patient-specific questions to tutors.",
+          },
+          { role: "user", content: message },
+        ],
       }),
     })
 
