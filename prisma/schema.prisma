@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ── NextAuth v5 Models ──────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?   // bcrypt hash for credentials auth
+  role          String    @default("delegate") // delegate | instructor | admin
+  phone         String?
+  whatsappPhone String?
+  telegramId    String?
+  cohortId      String?
+  cohort        Cohort?   @relation(fields: [cohortId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts         Account[]
+  sessions         Session[]
+  submissions      Submission[]
+  progress         Progress[]
+  agentInteractions AgentInteraction[]
+  agentReminders   AgentReminder[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ── Domain Models ───────────────────────────────────────────────
+
+model Course {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+
+  cohorts Cohort[]
+  modules Module[]
+
+  @@map("courses")
+}
+
+model Cohort {
+  id        String   @id @default(cuid())
+  courseId   String
+  name      String?
+  startDate DateTime?
+  endDate   DateTime?
+  createdAt DateTime @default(now())
+
+  course    Course   @relation(fields: [courseId], references: [id])
+  users     User[]
+  progress  Progress[]
+  milestones Milestone[]
+
+  @@map("cohorts")
+}
+
+model Module {
+  id          String   @id @default(cuid())
+  courseId     String
+  name        String
+  description String?
+  order       Int?
+  createdAt   DateTime @default(now())
+
+  course      Course       @relation(fields: [courseId], references: [id])
+  progress    Progress[]
+  submissions Submission[]
+  materials   Material[]
+
+  @@map("modules")
+}
+
+model Submission {
+  id          String    @id @default(cuid())
+  userId      String
+  moduleId    String?
+  type        String?   // assignment, cbda, vipla, assessment
+  title       String
+  description String?
+  dueDate     DateTime?
+  submittedAt DateTime?
+  status      String    @default("pending") // pending, submitted, under_review, approved, rejected
+  feedback    String?
+  feedbackAt DateTime?
+  score       Int?
+  fileUrl     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  module Module? @relation(fields: [moduleId], references: [id])
+
+  @@map("submissions")
+}
+
+model Progress {
+  id                   String   @id @default(cuid())
+  userId               String
+  cohortId              String?
+  moduleId              String?
+  completionPercentage Int      @default(0)
+  status               String?  // not_started, in_progress, completed
+  lastActivityAt       DateTime?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cohort Cohort? @relation(fields: [cohortId], references: [id])
+  module Module? @relation(fields: [moduleId], references: [id])
+
+  @@map("progress")
+}
+
+model AgentInteraction {
+  id              String   @id @default(cuid())
+  userId          String
+  messageType     String?  // query, reminder, nudge, status_check
+  delegateMessage String?
+  agentResponse   String?
+  contextUsed     Json?
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("agent_interactions")
+}
+
+model AgentReminder {
+  id            String    @id @default(cuid())
+  userId        String
+  reminderType  String?   // submission_deadline, feedback_ready, assignment_available
+  message       String?
+  sentAt        DateTime  @default(now())
+  acknowledgedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("agent_reminders")
+}
+
+model Material {
+  id          String   @id @default(cuid())
+  moduleId    String
+  title       String
+  description String?
+  type        String?  // video, document, reading, checklist
+  url         String?
+  createdAt   DateTime @default(now())
+
+  module Module @relation(fields: [moduleId], references: [id])
+
+  @@map("materials")
+}
+
+model Milestone {
+  id          String   @id @default(cuid())
+  cohortId     String
+  title       String
+  description String?
+  date        DateTime
+  type        String?  // assessment, submission_deadline, placement_start
+  createdAt   DateTime @default(now())
+
+  cohort Cohort @relation(fields: [cohortId], references: [id])
+
+  @@map("milestones")
+}
