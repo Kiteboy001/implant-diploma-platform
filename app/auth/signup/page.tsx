@@ -69,6 +69,23 @@ export default function SignupPage() {
             </div>
 
             <div>
+              <label htmlFor="gdcNumber" className="block text-sm font-semibold text-gray-900 mb-1.5">
+                GDC Number
+              </label>
+              <input
+                id="gdcNumber"
+                name="gdcNumber"
+                type="text"
+                autoComplete="off"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-shadow"
+                placeholder="e.g. 123456"
+              />
+              {state?.errors?.gdcNumber && (
+                <p className="text-red-600 text-sm mt-1.5">{state.errors.gdcNumber[0]}</p>
+              )}
+            </div>
+
+            <div>
               <label htmlFor="password" className="block text-sm font-semibold text-gray-900 mb-1.5">
                 Password
               </label>

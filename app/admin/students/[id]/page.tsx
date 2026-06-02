@@ -113,6 +113,16 @@ export default async function StudentDetailPage({ params }: Props) {
               </p>
             </div>
           )}
+          {student.gdcNumber && (
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider">
+                GDC Number
+              </p>
+              <p className="text-sm font-semibold text-gray-900">
+                {student.gdcNumber}
+              </p>
+            </div>
+          )}
           <div>
             <p className="text-xs text-gray-500 uppercase tracking-wider">
               Total Submissions

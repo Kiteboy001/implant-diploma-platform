@@ -14,6 +14,11 @@ const signupSchema = z.object({
     .min(8, "Password must be at least 8 characters")
     .regex(/[a-zA-Z]/, "Must contain at least one letter")
     .regex(/[0-9]/, "Must contain at least one number"),
+  gdcNumber: z
+    .string()
+    .regex(/^\d{5,8}$/, "GDC number must be 5-8 digits")
+    .optional()
+    .or(z.literal("")),
 })
 
 export type SignupState = {
@@ -21,6 +26,7 @@ export type SignupState = {
     name?: string[]
     email?: string[]
     password?: string[]
+    gdcNumber?: string[]
   }
   message?: string
 }
@@ -33,13 +39,14 @@ export async function signup(
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
+    gdcNumber: formData.get("gdcNumber") || "",
   })
 
   if (!validated.success) {
     return { errors: validated.error.flatten().fieldErrors }
   }
 
-  const { name, email, password } = validated.data
+  const { name, email, password, gdcNumber } = validated.data
 
   // Check if user already exists
   const existing = await prisma.user.findUnique({ where: { email } })
@@ -50,7 +57,12 @@ export async function signup(
   // Create user
   const hashedPassword = await bcrypt.hash(password, 10)
   await prisma.user.create({
-    data: { name, email, password: hashedPassword },
+    data: {
+      name,
+      email,
+      password: hashedPassword,
+      gdcNumber: gdcNumber || null,
+    },
   })
 
   // Sign in the user

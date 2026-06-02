@@ -33,6 +33,7 @@ export type UserMinAggregateOutputType = {
   password: string | null
   role: string | null
   phone: string | null
+  gdcNumber: string | null
   whatsappPhone: string | null
   telegramId: string | null
   cohortId: string | null
@@ -49,6 +50,7 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   role: string | null
   phone: string | null
+  gdcNumber: string | null
   whatsappPhone: string | null
   telegramId: string | null
   cohortId: string | null
@@ -65,6 +67,7 @@ export type UserCountAggregateOutputType = {
   password: number
   role: number
   phone: number
+  gdcNumber: number
   whatsappPhone: number
   telegramId: number
   cohortId: number
@@ -83,6 +86,7 @@ export type UserMinAggregateInputType = {
   password?: true
   role?: true
   phone?: true
+  gdcNumber?: true
   whatsappPhone?: true
   telegramId?: true
   cohortId?: true
@@ -99,6 +103,7 @@ export type UserMaxAggregateInputType = {
   password?: true
   role?: true
   phone?: true
+  gdcNumber?: true
   whatsappPhone?: true
   telegramId?: true
   cohortId?: true
@@ -115,6 +120,7 @@ export type UserCountAggregateInputType = {
   password?: true
   role?: true
   phone?: true
+  gdcNumber?: true
   whatsappPhone?: true
   telegramId?: true
   cohortId?: true
@@ -204,6 +210,7 @@ export type UserGroupByOutputType = {
   password: string | null
   role: string
   phone: string | null
+  gdcNumber: string | null
   whatsappPhone: string | null
   telegramId: string | null
   cohortId: string | null
@@ -241,6 +248,7 @@ export type UserWhereInput = {
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
+  gdcNumber?: Prisma.StringNullableFilter<"User"> | string | null
   whatsappPhone?: Prisma.StringNullableFilter<"User"> | string | null
   telegramId?: Prisma.StringNullableFilter<"User"> | string | null
   cohortId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -264,6 +272,7 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  gdcNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   whatsappPhone?: Prisma.SortOrderInput | Prisma.SortOrder
   telegramId?: Prisma.SortOrderInput | Prisma.SortOrder
   cohortId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -290,6 +299,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
+  gdcNumber?: Prisma.StringNullableFilter<"User"> | string | null
   whatsappPhone?: Prisma.StringNullableFilter<"User"> | string | null
   telegramId?: Prisma.StringNullableFilter<"User"> | string | null
   cohortId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -313,6 +323,7 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  gdcNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   whatsappPhone?: Prisma.SortOrderInput | Prisma.SortOrder
   telegramId?: Prisma.SortOrderInput | Prisma.SortOrder
   cohortId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -335,6 +346,7 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   role?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  gdcNumber?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   whatsappPhone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   telegramId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   cohortId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -351,6 +363,7 @@ export type UserCreateInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -373,6 +386,7 @@ export type UserUncheckedCreateInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -395,6 +409,7 @@ export type UserUpdateInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -417,6 +432,7 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -439,6 +455,7 @@ export type UserCreateManyInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -455,6 +472,7 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -470,6 +488,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -486,6 +505,7 @@ export type UserCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  gdcNumber?: Prisma.SortOrder
   whatsappPhone?: Prisma.SortOrder
   telegramId?: Prisma.SortOrder
   cohortId?: Prisma.SortOrder
@@ -502,6 +522,7 @@ export type UserMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  gdcNumber?: Prisma.SortOrder
   whatsappPhone?: Prisma.SortOrder
   telegramId?: Prisma.SortOrder
   cohortId?: Prisma.SortOrder
@@ -518,6 +539,7 @@ export type UserMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  gdcNumber?: Prisma.SortOrder
   whatsappPhone?: Prisma.SortOrder
   telegramId?: Prisma.SortOrder
   cohortId?: Prisma.SortOrder
@@ -691,6 +713,7 @@ export type UserCreateWithoutAccountsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -712,6 +735,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -749,6 +773,7 @@ export type UserUpdateWithoutAccountsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -770,6 +795,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -791,6 +817,7 @@ export type UserCreateWithoutSessionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -812,6 +839,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -849,6 +877,7 @@ export type UserUpdateWithoutSessionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -870,6 +899,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -891,6 +921,7 @@ export type UserCreateWithoutCohortInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -912,6 +943,7 @@ export type UserUncheckedCreateWithoutCohortInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -962,6 +994,7 @@ export type UserScalarWhereInput = {
   password?: Prisma.StringNullableFilter<"User"> | string | null
   role?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
+  gdcNumber?: Prisma.StringNullableFilter<"User"> | string | null
   whatsappPhone?: Prisma.StringNullableFilter<"User"> | string | null
   telegramId?: Prisma.StringNullableFilter<"User"> | string | null
   cohortId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -978,6 +1011,7 @@ export type UserCreateWithoutSubmissionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -999,6 +1033,7 @@ export type UserUncheckedCreateWithoutSubmissionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -1036,6 +1071,7 @@ export type UserUpdateWithoutSubmissionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1057,6 +1093,7 @@ export type UserUncheckedUpdateWithoutSubmissionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1078,6 +1115,7 @@ export type UserCreateWithoutProgressInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -1099,6 +1137,7 @@ export type UserUncheckedCreateWithoutProgressInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -1136,6 +1175,7 @@ export type UserUpdateWithoutProgressInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1157,6 +1197,7 @@ export type UserUncheckedUpdateWithoutProgressInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1178,6 +1219,7 @@ export type UserCreateWithoutAgentInteractionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -1199,6 +1241,7 @@ export type UserUncheckedCreateWithoutAgentInteractionsInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -1236,6 +1279,7 @@ export type UserUpdateWithoutAgentInteractionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1257,6 +1301,7 @@ export type UserUncheckedUpdateWithoutAgentInteractionsInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1278,6 +1323,7 @@ export type UserCreateWithoutAgentRemindersInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -1299,6 +1345,7 @@ export type UserUncheckedCreateWithoutAgentRemindersInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   cohortId?: string | null
@@ -1336,6 +1383,7 @@ export type UserUpdateWithoutAgentRemindersInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1357,6 +1405,7 @@ export type UserUncheckedUpdateWithoutAgentRemindersInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cohortId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1378,6 +1427,7 @@ export type UserCreateManyCohortInput = {
   password?: string | null
   role?: string
   phone?: string | null
+  gdcNumber?: string | null
   whatsappPhone?: string | null
   telegramId?: string | null
   createdAt?: Date | string
@@ -1393,6 +1443,7 @@ export type UserUpdateWithoutCohortInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1414,6 +1465,7 @@ export type UserUncheckedUpdateWithoutCohortInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1435,6 +1487,7 @@ export type UserUncheckedUpdateManyWithoutCohortInput = {
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gdcNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   whatsappPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   telegramId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1526,6 +1579,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   role?: boolean
   phone?: boolean
+  gdcNumber?: boolean
   whatsappPhone?: boolean
   telegramId?: boolean
   cohortId?: boolean
@@ -1550,6 +1604,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   phone?: boolean
+  gdcNumber?: boolean
   whatsappPhone?: boolean
   telegramId?: boolean
   cohortId?: boolean
@@ -1567,6 +1622,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   phone?: boolean
+  gdcNumber?: boolean
   whatsappPhone?: boolean
   telegramId?: boolean
   cohortId?: boolean
@@ -1584,6 +1640,7 @@ export type UserSelectScalar = {
   password?: boolean
   role?: boolean
   phone?: boolean
+  gdcNumber?: boolean
   whatsappPhone?: boolean
   telegramId?: boolean
   cohortId?: boolean
@@ -1591,7 +1648,7 @@ export type UserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "password" | "role" | "phone" | "whatsappPhone" | "telegramId" | "cohortId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "password" | "role" | "phone" | "gdcNumber" | "whatsappPhone" | "telegramId" | "cohortId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cohort?: boolean | Prisma.User$cohortArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
@@ -1629,6 +1686,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string | null
     role: string
     phone: string | null
+    gdcNumber: string | null
     whatsappPhone: string | null
     telegramId: string | null
     cohortId: string | null
@@ -2072,6 +2130,7 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
+  readonly gdcNumber: Prisma.FieldRef<"User", 'String'>
   readonly whatsappPhone: Prisma.FieldRef<"User", 'String'>
   readonly telegramId: Prisma.FieldRef<"User", 'String'>
   readonly cohortId: Prisma.FieldRef<"User", 'String'>

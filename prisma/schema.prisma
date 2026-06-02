@@ -18,6 +18,7 @@ model User {
   password      String?   // bcrypt hash for credentials auth
   role          String    @default("delegate") // delegate | instructor | admin
   phone         String?
+  gdcNumber     String?   // General Dental Council registration number
   whatsappPhone String?
   telegramId    String?
   cohortId      String?

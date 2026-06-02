@@ -1426,6 +1426,7 @@ export const UserScalarFieldEnum = {
   password: 'password',
   role: 'role',
   phone: 'phone',
+  gdcNumber: 'gdcNumber',
   whatsappPhone: 'whatsappPhone',
   telegramId: 'telegramId',
   cohortId: 'cohortId',
